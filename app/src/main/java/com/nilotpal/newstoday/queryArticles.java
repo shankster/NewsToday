@@ -108,9 +108,10 @@ public class queryArticles extends AppCompatActivity {
             String newsTitle=currentElement.getString("webTitle");
             String newsDate=currentElement.getString("webPublicationDate").substring(0,10);
             String newsUri=currentElement.getString("webUrl");
+            String sectionInfo=currentElement.getString("sectionName");
 
             Log.e(LOG_TAG,newsTitle);
-            news newNews=new news(newsTitle,newsDate,newsUri);
+            news newNews=new news(newsTitle,newsDate,newsUri,sectionInfo);
             news.add(newNews);
 
         }

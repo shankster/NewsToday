@@ -34,6 +34,9 @@ public class newsAdapter extends ArrayAdapter<news> {
 
         TextView articleDate=(TextView)listItemView.findViewById(R.id.newsListing);
         articleDate.setText(newNews.getNewsTitle());
+
+        TextView sectionInfo=(TextView)listItemView.findViewById(R.id.sectionInfo);
+        sectionInfo.setText(newNews.getSection());
         return listItemView;
     }
 }
