@@ -69,7 +69,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
                 NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected()) {
                     LoaderManager loaderManager = getLoaderManager();
-                    loaderManager.initLoader(BOOKS_LOADER_ID, null, NewsActivity.this);
+                    loaderManager.restartLoader(BOOKS_LOADER_ID, null, NewsActivity.this);
                 } else {
                     // Otherwise, display error
                     // First, hide loading indicator so error message will be visible
@@ -106,6 +106,8 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         Log.e(LOG_TAG, "Loader created");
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String max_results=sharedPrefs.getString(getString(R.string.settings_min_key),getString(R.string.default_max_results));
+        View loadingIndicator = findViewById(R.id.loading_indicator);
+        loadingIndicator.setVisibility(View.VISIBLE);
         return new newsLoader(this, link, keyword+"&page-size="+max_results);
     }
 
